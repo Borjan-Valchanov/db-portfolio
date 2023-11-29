@@ -1,0 +1,124 @@
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="stylesheet.css"/>
+<script src="script.js"></script>
+<div class="javascript-notice">
+	<div class="title">Please enable JavaScript to fully experience this document.</div>
+	<div class="javascript-text">It seems you have disabled JavaScript using a browser setting, extension or similar measure.
+	While this will improve privacy on some websites, JavaScript is vital for the functionality
+	of this document.</div>
+</div>
+<p>
+	<div class="title-primary" id="gliederung">Gliederung</div>
+	<ul>
+		<li><a class="title-tertiary" href="./#gliederung">Gliederung</a></li>
+		<li><a class="title-tertiary" href="./#theorie">Theoretischer Teil</a></li>
+		<ul>
+			<li><a href="./#einfuehrung">Was sind Datenbanken & warum?</a></li>
+			<li><a href="./#relationaledb">Relationale Datenbanken</a></li>
+			<li><a href="./#tabellen">Tabellen</a></li>
+			<li><a href="./#beziehungen">Beziehungen zwischen Tabellen</a></li>
+			<li><a href="./#dbs-modell">Modell Datenbanksysteme</a></li>
+			<li><a href="./#erm">Das ER-Modell</a></li>
+			<ul>
+				<li><a href="./#chen-notation">Chen-Notation</a></li>
+			</ul>
+			<li><a href="./#anomalien">Anomalien in Datenbanken</a></li>
+			<ul>
+				<li><a href="./#aenderungs-anom">Änderungsanomalie</a></li>
+				<li><a href="./#einfuege-anom">Einfügeanomalie</a></li>
+				<li><a href="./#loesch-anom">Löschanomalie</a></li>
+			</ul>
+			<li><a href="./#normalisierung">Normalisierung von Datenbanken</a></li>
+			<ul>
+				<li><a href="./#einfuehrung-nform">Einführung</a></li>
+				<ul>
+					<li><a href="./#db-datenarten">Datenarten</a></li>
+					<li><a href="./#db-anforderungen">Datenbankanforderungen</a></li>
+				</ul>
+				<li><a href="./#1te-nform">1. Normalform</a></li>
+				<li><a href="./#2te-nform">2. Normalform</a></li>
+				<li><a href="./#3te-nform">3. Normalform</a></li>
+			</ul>
+			<li><a href="./#db-sprachen">Datenbanksprachen am Beispiel von SQL</a></li>
+			<ul>
+				<li><a href="./#sql-lesen">Daten lesen: SELECT, FROM</a></li>
+				<li><a href="./#sql-filtern">Daten filtern: WHERE</a></li>
+				<ul>
+					<li><a href="./#sql-reduktion-aggregation">Erweitertes filtern mit Reduktions- und Aggregationsfunktionen:<br/>
+					ORDER BY, GROUP BY, LIMIT, DISTINCT, SUM(), AVG(), MIN(), MAX</a></li>
+				</ul>
+				<li><a href="./#sql-joins">Daten aus mehreren Tabellen: JOINs</a></li>
+				<li><a href="./#sql-insert-into">Daten einfügen: INSERT INTO</a></li>
+				<li><a href="./#sql-update">Daten ändern: UPDATE</a></li>
+				<li><a href="./#sql-delete">Daten löschen: DELETE</a></li>
+				<li><a href="./#sql-create-table">Tabellen erstellen: CREATE TABLE</a></li>
+				<li><a href="./#sql-drop-table">Tabellen löschen: DROP TABLE</a></li>
+			</ul>
+			<li><a href="./#datenschutz-datensicherheit">Datenschutz und Datensicherheit</a></li>
+			<ul>
+				<li><a href="./#datenschutz">Datenschutz: Intern, Extern</a></li>
+				<ul>
+					<li><a href="./#sql-injection">SQL Injection</a></li>
+				</ul>
+				<li><a href="./#datensicherheit">Datensicherheit</a></li>
+				<ul>
+					<li><a href="./#backuptypen">Backuptypen:<br/>
+					Vollständig, Differentiell, Inkrementell</a></li>
+					<li><a href="./#backupstrategien">Backupstrategien: 3-2-1</a></li>
+				</ul>
+			</ul>
+			<li><a href="./#glossar">Glossar</a></li>
+		</ul>
+		<li><a class="title-tertiary" href="./#praxis">Praxisanwendung</a></li>
+	</ul>
+	<hr/>
+	<div class="title-primary" id="theorie">Theoretischer Teil</div>
+	<div class="title-secondary" id="einfuehrung">Was sind Datenbanken & warum?</div>
+	<p>
+		Unter Datenbanken versteht man in der Informatik jegliches System, welches das organisierte Speichern, Abrufen und Verändern von Daten erlaubt. Es gibt viele verschiedene Möglichkeiten, solch ein System zu erstellen. Dies ist auch immer von der Art der zu speichernden Daten abhängig. Dieses Portfolio wird ausschließlich die relationalen Datenbanken thematisieren. Sie sind eine häufige Wahl für viele verschiedene Anwendungsmöglichkeiten.
+	</p>
+	<div class="title-secondary" id="relationaledb">Relationale Datenbanken</div>
+	<p>
+		Relationale Datenbanken bestehen allgemein betrachtet aus verschiedenen Tabellen, in denen Daten abgelegt werden. Diese Tabellen werden <b>Entitäten</b> genannt. Eine Entität speichert Daten über eine ganz bestimmte Art von Sache; so könnte beispielsweise eine Entität mit dem Namen "Schüler" eine Tabelle sein, die die Daten aller Schüler einer Schule, eines Schulbezirks oder einer Stadt sein, je nachdem was genau der Zweck der Datenbank ist.
+	</p>
+	<div class="title-secondary" id="tabellen">Tabellen</div>
+	<p>
+		Dabei ist jede Zeile einer solchen Tabelle eine einzelne "Sache", <b>Objekt</b> genannt. In dem eben genannten Beispiel also würde eine Zeile alle Daten zu genau einem Schüler enthalten.
+	</p>
+	<p>
+		Die Spalten enthalten die immer gleiche Art von Information über jedes Objekt. Sie werden als <b>Attribute</b> ihrer zugehörigen Entität bezeichnet. Ein mögliches Attribut in unserem Beispiel wäre "Vorname". Man würde sagen:<br/>
+		"Vorname" ist ein Attribut der Entität "Schüler".
+	</p>
+	<img src="resources/tabellebegriffe.png"/>
+	<p>
+		Bei relationalen Datenbanken ist es wichtig, dass wir die einzelnen Objekte außeinander halten können. Dazu wird ein Attribut oder eine Kombination aus mehreren Attributen zum sogenannten <b>Primärschlüssel</b> der Entität. Jedes Objekt muss einen Wert für diesen Primärschlüssel besitzen, und dieser Wert muss diesem Objekt eindeutig zuordnungsbar sein, also für alle Objekte der Entität einzigartig sein.<br/>
+		In unserem Beispiel könnten wir als Primärschlüssel der Entität "Schüler" die Kombination aus Vorname und Name nehmen, jedoch stellt sich da das Problem, dass es Schüler mit gleichen Namen geben kann. Daher ist es in vielen Tabellen üblich, als Primärschlüssel eine einzigarte Nummer zuzuweisen. Hier könnten wir also als Primärschlüssel ein neues Attribut "SchuelerNr" hinzufügen.
+	</p>
+	<div class="title-secondary" id="beziehungen">Beziehungen zwischen Tabellen</div>
+	<p>
+		Eine Datenbank kann beliebig viele solcher Entitäten enthalten. Häufig jedoch hängen diese Daten zusammen. Wir könnten in unserem Beispiel von eben eine weitere Entität "Schulbücher" hinzufügen, jedoch haben wir damit noch keine Möglichkeit zu speichern, an welche Schüler welche Schulbücher ausgeliehen sind. Solche Zusammenhänge zwischen Tabellen nennt man <b>Beziehungen.</b> In diesem Beispiel könnten wir in die Schulbuchtabelle ein neues Attribut "SchuelerNr" hinzufügen, welches die einzigartige Nummer des Schülers, der das Buch ausgeliehen hat enthält. Solch ein Attribut, welches auf den Primärschlüssel einer <i>anderen</i> Tabelle verweist, wird <b>Fremdschlüssel</b> genannt.
+	</p>
+	<div class="title-secondary" id="dbs-modell">Modell Datenbanksysteme</div>
+	<p>
+		In echten Szenarien gibt es jedoch noch zusätzliche Komponenten neben der eigentlichen Datenbank, um Zugriff auf sie zu regulieren.
+	</p>
+	<img src="resources/dbs.png" class="large-image"/>
+	<p>
+		Das <b>Datenbankmanagementsystem (DBMS)</b> verwaltet, wer welche Daten der Datenbank lesen, modifizieren und löschen kann. Außerdem verwaltet es Möglichkeiten, auf die Datenbank zuzugreifen, wie beispielsweise eine <b>API (Application Programming Interface)</b>, also eine Möglichkeit, die Datenbank auf einem Server im Internet abzulegen und dann in einem Computerprogramm Abfragen an die Datenbank über diesen Server zu machen.
+	</p>
+	<p>
+		Der gemeinsame Zusammenschluss aus Datenbank und Datenbankmanagementsystem nennt sich <b>Datenbanksystem</b>, kurz <b>DBS</b>.
+	</p>
+	<div class="title-secondary" id="erm">Das ER-Modell</div>
+	<img src="resources/erm.png" class="large-image"/>
+	<p>
+		Mit dem <b>ER-Modell (Entity-Relationship-Modell)</b> können Datenbanken zeichnerisch dargestellt werden. 
+	</p>
+	<p>
+		Tabellen (Entitäten) werden als rechteckige Boxen dargestellt, an denen mit Linien verbunden Attribute als Ellipsen liegen. Primärschlüssel sind dabei unterstrichene Attribute und Fremdschlüssel unterstrichen mit einem Pfeil nach oben am Ende. Beziehungen sind Rauten, die mit beiden relevanten Entitäten verbunden sind.
+	</p>
+	<div class="title-tertiary" id="chen-notation">Chen-Notation</div>
+	<p>
+		
+	</p>
+</p>
