@@ -15,6 +15,12 @@ a {
 	text-decoration: none;
 }
 
+p {
+	margin-left: 1.5vw;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
 .javascript-notice {
 	background-color: #ffa49b;
 	top: 5px;
