@@ -29,6 +29,11 @@ a {
 	height: 40vh;
 }
 
+.wide-image {
+	width: 45vw;
+	height: auto;
+}
+
 .title-primary {
 	font-size:xx-large;
 	font-weight: 600;
