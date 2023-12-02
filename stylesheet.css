@@ -1,13 +1,47 @@
+@font-face {
+	font-family: 'CascadiaCode';
+	src:
+		url('resources/fonts/CascadiaCode.woff2') format('woff2'),
+		url('resources/fonts/CascadiaCode.ttf') format('truetype');
+}
+
+html {
+	background-color: #c2d5ef;
+}
+
 body {
 	color: black;
 	background-color: #eaf5ff;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	max-width: 1440px;
 	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 40px;
+	padding-right: 40px;
+	border: 1.5px #1a253f solid;
+	border-top: none;
+	border-bottom: none;
+}
+
+code {
+	background-color: #282c34;
+	color:#abb2bf;
+	padding: 4px;
+	border-radius: 4px;
+	font-family: 'CascadiaCode';
+	font-size: small;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	display:inline-block;
 }
 
 img {
 	height: 20vh;
+	border-radius: 5px;
+	margin-bottom: 16px;
 }
 
 a {
@@ -17,8 +51,28 @@ a {
 
 p {
 	margin-left: 1.5vw;
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+red {
+	color: #DA6C75;
+}
+
+green {
+	color: #98C379;
+}
+
+blue {
+	color: #43B5C2;
+}
+
+yellow {
+	color: #E5C07B;
+}
+
+purple {
+	color: #C678DD;
 }
 
 .javascript-notice {

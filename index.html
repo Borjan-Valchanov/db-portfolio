@@ -2,10 +2,10 @@
 <link rel="stylesheet" href="stylesheet.css"/>
 <script src="script.js"></script>
 <div class="javascript-notice">
-	<div class="title">Please enable JavaScript to fully experience this document.</div>
+	<div class="title-secondary">Please enable JavaScript to fully experience this document.</div>
 	<div class="javascript-text">It seems you have disabled JavaScript using a browser setting, extension or similar measure.
 	While this will improve privacy on some websites, JavaScript is vital for the functionality
-	of this document.</div>
+	of this document. If you are seeing this with JavaScript enabled, it might be that the page is still loading.</div>
 </div>
 <p>
 	<div class="title-primary" id="gliederung">Gliederung</div>
@@ -70,6 +70,10 @@
 			<li><a href="./#glossar">Glossar</a></li>
 		</ul>
 		<li><a class="title-tertiary" href="./#praxis">Praxisanwendung</a></li>
+		<ul>
+			<li><a href="./#praxis-erm">ER-Modell</a></li>
+			<li><a href="./#praxis-sql">Beispielabfrage</a></li>
+		</ul>
 	</ul>
 	<hr/>
 	<div class="title-primary" id="theorie">Theoretischer Teil</div>
@@ -89,7 +93,7 @@
 		Die Spalten enthalten die immer gleiche Art von Information über jedes Objekt. Sie werden als <b>Attribute</b> ihrer zugehörigen Entität bezeichnet. Ein mögliches Attribut in unserem Beispiel wäre "Vorname". Man würde sagen:<br/>
 		"Vorname" ist ein Attribut der Entität "Schüler".
 	</p>
-	<img src="resources/tabellebegriffe.png"/>
+	<img src="resources/images/tabellebegriffe.png"/>
 	<p>
 		Bei relationalen Datenbanken ist es wichtig, dass wir die einzelnen Objekte außeinander halten können. Dazu wird ein Attribut oder eine Kombination aus mehreren Attributen zum sogenannten <b>Primärschlüssel</b> der Entität. Jedes Objekt muss einen Wert für diesen Primärschlüssel besitzen, und dieser Wert muss diesem Objekt eindeutig zuordnungsbar sein, also für alle Objekte der Entität einzigartig sein.<br/>
 		In unserem Beispiel könnten wir als Primärschlüssel der Entität "Schüler" die Kombination aus Vorname und Name nehmen, jedoch stellt sich da das Problem, dass es Schüler mit gleichen Namen geben kann. Daher ist es in vielen Tabellen üblich, als Primärschlüssel eine einzigartige Nummer zuzuweisen. Hier könnten wir also als Primärschlüssel ein neues Attribut "SchuelerNr" hinzufügen.
@@ -102,7 +106,7 @@
 	<p>
 		In echten Szenarien gibt es jedoch noch zusätzliche Komponenten neben der eigentlichen Datenbank, um Zugriff auf sie zu regulieren.
 	</p>
-	<img src="resources/dbs.png" class="large-image"/>
+	<img src="resources/images/dbs.png" class="large-image"/>
 	<p>
 		Das <b>Datenbankmanagementsystem (DBMS)</b> verwaltet, wer welche Daten der Datenbank lesen, modifizieren und löschen kann. Außerdem verwaltet es Möglichkeiten, auf die Datenbank zuzugreifen, wie beispielsweise eine <b>API (Application Programming Interface)</b>, also eine Möglichkeit, die Datenbank auf einem Server im Internet abzulegen und dann in einem Computerprogramm Abfragen an die Datenbank über diesen Server zu machen.
 	</p>
@@ -110,7 +114,7 @@
 		Der gemeinsame Zusammenschluss aus Datenbank und Datenbankmanagementsystem nennt sich <b>Datenbanksystem</b>, kurz <b>DBS</b>.
 	</p>
 	<div class="title-secondary" id="erm">Das ER-Modell</div>
-	<img src="resources/erm.png" class="large-image"/>
+	<img src="resources/images/erm.png" class="large-image"/>
 	<p>
 		Mit dem <b>ER-Modell (Entity-Relationship-Modell)</b> können Datenbanken zeichnerisch dargestellt werden. 
 	</p>
@@ -127,11 +131,11 @@
 		<li>Die Filiale einer Bäckerkette hat genau eine Adresse, und an einer Adresse steht genau eine Bäckerfiliale.<br/>heißt <b>1:1</b>-Beziehung</li>
 	</ul>
 	<p>Diese Notation kann auch in ER-Modelle eingebunden werden:</p>
-	<img src="resources/chen-notation.png" class="wide-image"/>
+	<img src="resources/images/chen-notation.png" class="wide-image"/>
 	<p>
 		Im Falle einer 1:1-Beziehung können die Eigenschaften der einen Entität in Attribute der anderen Entität umgewandelt werden, da von beiden Seiten aus ein Objekt sich immer nur in genau einer Beziehung befindet: im Bäckerbeispiel wäre die Adresse dann einfach nur ein Attribut der Entität "Bäckerfiliale".<br/>
 		Eine 1:n-Beziehung kann dargestellt werden, indem auf der Seite auf der ein Objekt immer nur in einer Beziehung beteiligt ist ein Fremdschlüssel für die Entität zu der die Beziehung besteht hinzugefügt wird.
-		Bei einer m:n-Beziehung kann diese nicht mehr nur durch Attribute dargestellt werden, da es sich von keiner Seite aus um eine einzigartige Beziehung handelt. Dies ist ein Beispiel für ein Problem, dass beim Erstellen einer Datenbank auftreten kann.
+		Bei einer m:n-Beziehung kann diese nicht mehr nur durch Attribute dargestellt werden, da es sich von keiner Seite aus um eine einzigartige Beziehung handelt. Hier wird eine neue Tabelle mit nur zwei Spalten erstellt, die jeweils Fremdschlüssel für die beiden beteiligten Tabellen sind. Ihre Kombination ist der Primärschlüssel der Tabelle.
 	</p>
 	<div class="title-secondary" id="anomalien">Anomalien in Datenbanken</div>
 	<p>
@@ -178,4 +182,327 @@
 		<p><b>Datenkonsistenz</b> bedeutet, dass die Datenbank keine widersprüchlichen Daten enthalten darf.</p>
 		<p><b>Redundanzfreiheit</b> bedeutet, dass Daten innerhalb einer Datenbank nicht mehrfach oder unnötig komplex gespeichert werden, also so, dass Speicherplatz optimal genutzt wird.</p>
 	</ul>
+	<p>Mithilfe der sogenannten <b>Normalisierung</b> ist es möglich, fehlerhafte Datenbanken diese Anforderungen erfüllen zu lassen und vollständig anomaliefrei zu sein.</p>
+	<ul>
+		<div class="title-tertiary" id="1te-nform">1. Normalform</div>
+		<p>
+			In der 1. Normalform werden alle Attribute jeder Entität <b>atomar</b> <i>(=altgriech. "unteilbar")</i> gemacht. Das bedeutet, dass alle kombinierten Datensätze in einzelne Attribut aufgeteilt werden. Aus "Addresse" wird dann beispielsweise "Ort", "PLZ", "Straße" und "Hausnummer".
+		</p>
+		<div class="title-tertiary" id="2te-nform">2. Normalform</div>
+		<p>
+			In der 2. Normalform werden Tabellen so aufgespaltet, dass innerhalb jeder Tabelle die gespeicherte Information vollständig von ihrem Primärschlüssel abhängen. Um dies zu veranschaulichen, gehen wir zu unserem Beispiel der kombinierten Tabelle aus Schülern und Schulbüchern zu einer Ausleih-Tabelle zurück: auch wenn ein einzigartiger Datensatz durch die Kombination aus Schülernummer und Buchnummer gekennzeichnet wird (auch wenn dies die mehrfache Ausleihe des selben Buches erlaubt, die wir vorher ausgeschlossen haben), hängt beispielsweise das Geburtsdatum eines Schülers nicht von der Kombination aus Schülernummer und Buchnummer ab, sondern nur von der Schülernummer. Um diese Datenbank in die 2. Normalform zu bringen, würden wir die Tabelle in "Schüler" und "Schulbücher" aufteilen.
+		</p>
+		<div class="title-tertiary" id="3te-nform">3. Normalform</div>
+		<p>
+			In der 3. Normalform werden neue Tabellen erstellt, um Attribute, die für ihren Primärschlüssel nicht spezifisch sind/nicht vom gesamten Primärschlüssel abhängen, zu isolieren. Ein Beispiel wäre, falls wir in der Schulbuchtabelle auch den Buchautor speichern. Auch wenn dieser nur von der Buchnummer abhängig ist, ist er für diese Buchnummer nicht spezifisch (nicht dasselbe wie einzigartig!), da mehrere Bücher vom selben Autor geschrieben werden. Hierbei würde eine neue Tabelle "Autor" entstehen und das Attribut in der Tabelle "Schulbuch" zu einem Fremdschlüssel werden.
+		</p>
+	</ul>
+	<div class="title-secondary" id="db-sprachen">Datenbanksprachen am Beispiel von SQL</div>
+	<p>
+		Datenbanksprachen werden verwendet, um aus einer Datenbank Informationen auszulesen, zu löschen und zu modifizieren. Es gibt sehr viele, sowohl für relationale als auch für andere Datenbanken. Die meisten Datenbanksprachen für relationale Datenbanken sind Dialekte von <b>SQL (Structured Query Language)</b>, wie beispielsweise CQL, MySQL, PostgreSQL, sqlite und viele mehr.<br/>
+		Als Beispiel wird hier SQL verwendet.
+	</p>
+	<p>
+		Ein SQL-Ausdruck endet immer mit einem Semikolon (<code>;</code>).
+	</p>
+	<div class="title-tertiary" id="sql-lesen">Daten lesen</div>
+	<p>
+		Mithilfe von <code><red>SELECT</red></code> und <code><red>FROM</red></code> werden Daten aus Tabellen abgefragt. Die Syntax funktioniert wie folgt:
+	</p>
+	<code><red>SELECT</red> Attribute <red>FROM</red> <blue>Tabelle</blue>;</code>
+	<p>
+		Damit werden die Attribute <code>Attribute</code> aller Einträge aus <code><blue>Tabelle</blue></code> ausgegeben. Alternativ kann auch ein Asterisk <code>*</code> verwendet werden, wenn alle Attribute erwünscht sind:
+	</p>
+	<code><red>SELECT</red> * <red>FROM</red> <blue>Tabelle</blue>;</code>
+	<div class="title-tertiary" id="sql-filtern">Daten filtern</div>
+	<p>Manchmal jedoch möchte man die Daten, die man erhält, weiter filtern. In diesem Fall wird <code><red>WHERE</red></code> verwendet. Damit können Beschränkungen auf Attributswerte gelegt werden. Diese Anfrage beispielsweise gibt alle Daten über Schüler aus Berlin aus einer gedachten Beispieltabelle aus:</p>
+	<code><red>SELECT</red> * <red>FROM</red> <blue>Schueler</blue> <red>WHERE</red> Ort = <yellow>'Berlin'</yellow>;</code>
+	<p>
+		Wir können zusätzlich Daten filtern und verarbeiten mit sogenannten <b>Reduktions- und Aggregationsfunktionen.</b>
+	</p>
+	<div class="title-quaternary" id="sql-reduktion-aggregation">Reduktions- und Aggregationsfunktionen</div>
+	<p>
+		Reduktions- und Aggregationsfunktionen inkludieren viele kleine, hilfreiche Dinge mit denen gemeinsam hohe Abfragekomplexität erreicht werden kann.
+	</p>
+	<p>Die folgenden Funktionen folgen dem Format <code><green>funktion</green>(Attribut)</code> und können mit <code><red>SELECT</red></code>, <code><red>WHERE</red></code> und <code><purple>ORDER BY</purple></code> verwendet werden.</p>
+	<ul>
+		<p><code><green>MIN</green>(Attribut)</code>: Nennt den kleinsten Wert, der für dieses Attribut vorkommt</p>
+		<p><code><green>MAX</green>(Attribut)</code>: Nennt den größten Wert, der für dieses Attribut vorkommt</p>
+		<p><code><green>AVG</green>(Attribut)</code>: Nennt den Durchschnitt aller Werte für dieses Attribut</p>
+		<p><code><green>SUM</green>(Attribut)</code>: Nennt die Summe aller Werte für dieses Attribut</p>
+		<p><code><green>COUNT</green>(Attribut)</code>: Nennt die Anzahl von Werten für dieses Attribut. Zählt gleiche Werte mehrfach.</p>
+	</ul>
+	<p>Weitere Funktionen:</p>
+	<ul>
+		<p><code><purple>GROUP BY</purple> Attribut</code>: Wird an die bestehende Abfrage angehangen und gruppiert die Ergebnisse nach dem Wert von <code>Attribut</code>.</p>
+		<ul>
+			<p>
+				Beispiel: <code><red>SELECT</red> Ort, <green>COUNT</green>(Kundennr) <red>FROM</red> <blue>Kunden</blue> <purple>GROUP BY</purple> Ort;</code> gibt die Anzahl von Kunden pro Ort aus der gedachten Tabelle "Kunden" aus.
+			</p>
+		</ul>
+		<p><code><purple>ORDER BY</purple> Attribut</code>: Sortiert nach <code>Attribut</code>. Durch Anhängen von <code><purple>ASC</purple></code> bzw. <code><purple>DESC</purple></code> wird entweder aufsteigend oder absteigend sortiert. Standardmäßig ist die Sortierung aufsteigend.</p>
+		<p><code><purple>LIMIT</purple> #</code>: Begrenzt die Anzahl der auszugebenden Zeilen auf die ganze, positive Zahl <code>#</code>.</p>
+		<p><code><green>DISTINCT</green> Attribut</code>: Ignoriert weitere, gleiche Werte für <code>Attribut</code> falls diese mehrfach vorkommen.<br></p>
+		<ul>
+			<p>
+				Beispiel: <code><red>SELECT</red> <green>COUNT</green>(Ort) <red>FROM</red> <blue>Kunden</blue>;</code> gibt die Anzahl von Kunden an, die einen Wohnort angegeben haben.<br>
+				<code><red>SELECT</red> <green>COUNT</green>(<green>DISTINCT</green> Ort) <red>FROM</red> <blue>Kunden</blue>;</code> gibt die Anzahl von Orten an, in denen Kunden wohnen.
+			</p>
+		</ul>
+	</ul>
+	<div class="title-tertiary" id="sql-joins">Daten aus mehreren Tabellen</div>
+	<p>
+		Wir haben zuvor die Normalisierung kennengelernt, bei der wir Tabellen aufgespalten haben, um einige entstehende Probleme zu vermeiden. Dies hat jedoch auch dafür gesorgt, dass wir mit unserem bisherigen Wissen zu Datenbankabfragen keine kombinierten Daten abfragen können. Um dies zu tun, gibt es in SQL sogenannte <b>JOINs</b>. Damit verbinden <i>(=engl. "join")</i> wir Tabellen über die vorhandenen Fremdschlüssel.
+	</p>
+	<p>
+		Wir werden hierbei uns an das Schüler-Schulbuch Beispiel halten. Wenn wir eine kombinierte Tabelle als Ausgabe haben möchten, müssen wir darauf achten, dass die Daten innerhalb jeder Zeile zusammengehören. Dies ist der Fall, wenn der Fremdschlüssel für den Schüler in der Tabelle Schulbuch in dieser Zeile den gleichen Wert hat wie der Primärschlüssel des Schülers in dieser Zeile. In SQL können wir dies wie folgt ausdrücken:
+	</p>
+	<code><red>SELECT</red> * <red>FROM</red> <blue>Schueler</blue>, <blue>Schulbuch</blue><br><red>WHERE</red> <blue>Schueler</blue>.Schuelernr = <blue>Schulbuch</blue>.AusgeliehenVon;</code>
+	<p>
+		Was wir hier gemacht haben, nennt sich ein <b>Inner Join</b>, da aus beiden Tabellen nur Daten vorkommen, die eine Beziehung zu einem Datensatz der anderen Tabelle haben. Daneben gibt es auch noch den <b>Left Join</b>, bei dem alle kombinierten Daten plus die beziehungslosen Daten <i>einer</i> Tabelle vorkommen. Beim <b>Outer Join</b> werden alle Daten, die kombiniert werden können, kombiniert, aber es kommen auch beziehungslose Daten aus <i>beiden</i> Tabellen vor. 
+	</p>
+	<img src="resources/images/joins.png"/>
+	<p>
+		Für JOINs gibt es einfachere Syntax, bei der auch ganz einfach zwischen den verschiedenen Arten von JOINs variiert werden kann. Diese kommt vor dem <code><red>WHERE</red></code> und nach dem <code><red>FROM</red></code> und sieht wie folgt aus:
+	</p>
+	<code><red>SELECT</red> Attribute <red>FROM</red> <blue>Tabelle1</blue> [<red>INNER</red>/<red>LEFT</red>/<red>OUTER</red>] <red>JOIN</red> <blue>Tabelle2</blue> <red>ON</red> <blue>Tabelle1</blue>.Primärschlüssel = <blue>Tabelle2</blue>.Fremdschlüssel;</code>
+	<p>
+		Dabei wird je nach Bedarf aus der Klammer <code>[]</code> der <code><red>INNER JOIN</red></code>, <code><red>LEFT JOIN</red></code> oder <code><red>OUTER JOIN</red></code> gewählt. Es gibt außerdem eine weitere Variation des Inner Join, den sogenannten <b>Natural Join</b>. Dieser hat einfach nur eine verkürzte Schreibweise, da <code><red>ON</red> [Verbindungsbedingung]</code> wegfällt. Er wird verwendet, wenn der Name des Fremdschlüsselattributs in der zu verbindenden Tabelle der gleiche ist wie der des Primärschlüssels der ersten Tabelle. 
+	</p>
+	<div class="title-tertiary" id="sql-insert-into">Daten einfügen</div>
+	<p>
+		Neben dem Lesen von Datenbanken ist natürlich das Einfügen neuer Daten eine wichtige Aufgabe bei echten Datenbankanwendungen. Hierfür wird folgende Syntax verwendet:
+	</p>
+	<code><red>INSERT INTO</red> <blue>Tabelle</blue> (Attribut1, Attribut2, ...) <red>VALUES</red> (Wert1, Wert2, ...);</code>
+	<p>
+		Dabei wird ein neuer Tabelleneintrag erstellt, mit Werten für alle angegebenen Attribute. Dabei müssen für den Primärschlüssel und alle Attribute, die den <code><red>NOT NULL</red></code>-Constraint haben. Mehr Details dazu bei: <i>"<a href="./#sql-create-table">Tabellen erstellen: CREATE TABLE</a>"</i>
+	</p>
+	<div class="title-tertiary" id="sql-update">Daten modifizieren</div>
+	<p>
+		Daten existierender Tabelleneinträge werden über folgende Syntax modifiziert:
+	</p>
+	<code><red>UPDATE</red> <blue>Tabelle</blue> <red>SET</red> Attribut1 = Wert1, Attribut2 = Wert2, ... <red>WHERE</red> [Bedingung];</code>
+	<p>
+		Hier werden die Attributswerte <i>aller</i> Tabelleneinträge modifiziert, die <code>[Bedingung]</code> erfüllen. Wenn man nur einen einzelnen Datensatz modifizieren will, enthält die Bedingung einen eindeutigen Wert für den Primärschlüssel.
+	</p>
+	<div class="title-tertiary" id="sql-delete">Daten löschen</div>
+	<code><red>DELETE</red> Attribut1, Attribut2, ... <red>FROM</red> <blue>Tabelle</blue> <red>WHERE</red> [Bedingung];</code>
+	<p>
+		Mit <code><red>DELETE</red></code> können einzelne Attributswerte aus einem Datensatz gelöscht werden. Beim Löschen des Primärschlüssels wird der gesamte Datensatz gelöscht. Auch hier wird dies auf allle der auf <code>[Bedingung]</code> zutreffenden Datensätze angewandt. Daher ist große Vorsicht geboten.
+	</p>
+	<div class="title-tertiary" id="sql-create-table">Tabellen erstellen</div>
+	<code>
+		<red>CREATE TABLE</red> <blue>Tabelle</blue> (<br>
+		Attribut1 [<purple>Datentyp</purple>] [<purple>Constraints</purple>],<br>...
+		<br>)
+	</code>
+	<p>
+		Primärschlüssel werden wie folgt denotiert:
+	</p>
+	<code>
+		<red>CREATE TABLE</red> <blue>Tabelle</blue> (<br>
+		Attribut1 [<purple>Datentyp</purple>] [<purple>Constraints</purple>] <red>PRIMARY KEY</red>,<br>...
+		<br>)
+	</code>
+	<p>
+		oder
+	</p>
+	<code>
+		<red>CREATE TABLE</red> <blue>Tabelle</blue> (<br>
+		Attribut1 [<purple>Datentyp</purple>] [<purple>Constraints</purple>],<br>
+		...,<br>
+		<red>PRIMARY KEY</red>(Attribut1, Attribut2, ...)
+		<br>)
+	</code>
+	<p>
+		<b>Datentypen</b> beschreiben, welche Arten von Werten für ein Attribut gespeichert werden können. Hier sind einige aufgelistet:
+	</p>
+	<ul>
+		<p><code><purple>INT</purple></code>: eine ganze Zahl</p>
+		<p><code><purple>TEXT</purple></code>: Text</p>
+		<p><code><purple>DECIMAL</purple></code>: eine Fließkommazahl</p>
+		<p><code><purple>DATE</purple></code>: ein Datum</p>
+		<p><code><purple>BOOLEAN</purple></code>: ein Wahr-Falsch-Wert, auch bool'scher Wert</p>
+	</ul>
+	<p>
+		<b>Constraints</b> geben Rahmenbedingungen für das Attribut an. Hier sind sie aufgelistet:
+	</p>
+	<ul>
+		<p><code><purple>NOT NULL</purple></code>: Es <i>muss</i> immer ein Wert für dieses Attribut angegeben werden.</p>
+		<p><code><purple>AUTO INCREMENT</purple></code>: Zählt beim Erstellen neuer Datensätze den Wert bei Zahlattributen hoch. Hiermit kann vermieden werden, dass für Primärschlüssel oder <code><purple>NOT NULL</purple></code>-Attribute ein Wert angegeben werden muss.</p>
+		<p><code><purple>UNIQUE</purple></code>: Der Wert muss einzigartig sein.</p>
+	</ul>
+	<div class="title-tertiary" id="sql-drop-table">Tabellen löschen</div>
+	<p>
+		Zu guter letzt müssen manchmal auch Tabellen gelöscht werden. Dies geschieht mit:
+	</p>
+	<code><red>DROP TABLE</red> <blue>Tabelle</blue>;</code>
+	<p>
+		Die Daten in der Tabelle sind dann sofort und unwiderruflich <i>weg.</i> Damit so etwas nicht versehentlich passiert, gibt es bestimmte Sicherheitsmaßnahmen in Datenbankmanagementsystemen.
+	</p>
+	<div class="title-secondary" id="datenschutz-datensicherheit">Datenschutz und Datensicherheit</div>
+	<p>
+		Bevor wir das Erreichen dieser beiden Zielsetzungen klären können, müssen wir uns erst des Unterschiedes bewusst werden.
+	</p>
+	<p>
+		<b>Datenschutz</b> bedeutet das <i>Schützen</i> unserer Daten <i>vor unerlaubtem Zugriff.</i> Dafür muss Zugriff auf Daten verwaltet werden, wie beispielsweise, was für Nutzer/Mitarbeiter was für Zugriff <i>(Lese-/Schreib-/Löschzugriff "rwx")</i> auf welche Tabellen haben.
+	</p>
+	<p>
+		<b>Datensicherheit</b> bedeutet die <i>Sicherung des unbeschädigten Fortbestehens</i> unserer Daten. Dafür müssen vor allem Backuplösungen betrachtet werden.
+	</p>
+	<div class="title-tertiary" id="datenschutz">Datenschutz</div>
+	<p>
+		Datenschutz unterscheidet sich intern und extern: Intern muss hauptsächlich Zugriff beschränkt werden. Nach außen hin muss direkter Datenbankzugriff vermieden werden, während trotzdem Zugriff auf manche Daten erlaubt werden muss. Wir werden dafür das Beispiel <b>SQL-Injection</b> betrachten.
+	</p>
+	<div class="title-quaternary" id="sql-injection">SQL-Injection</div>
+	<p>
+		SQL-Injection ist das "unterschmuggeln" von SQL-Ausdrücken in datenbankbasierte Abfragefelder. Nehmen wir an, wir haben ein Suchfeld auf der Webseite einer Bibliothek. Wird ein Suchbegriff eingegeben, wird die folgende Datenbankanfrage gesendet:
+	</p>
+	<code><red>SELECT</red> Titel, Autor, ISBN <red>FROM</red> <blue>Tabelle</blue> <red>WHERE</red> Titel=<yellow>'%[Suchbegriff]%';</yellow></code>
+	<p>
+		Wobei <code>[Suchbegriff]</code> mit dem tatsächlichen Suchbegriff ersetzt wird und <code>%</code> für jede mögliche Buchstabenfolge stehen kann. Jetzt gibt ein Nutzer folgenden Suchbegriff ein:
+	</p>
+	<p>
+		'); SELECT * FROM Kunden; --
+	</p>
+	<p>Die entstehende Anfrage lautet:</p>
+	<code><red>SELECT</red> Titel, Autor, ISBN <red>FROM</red> <blue>Tabelle</blue> <red>WHERE</red> Titel=<yellow>'%'</yellow>); <red>SELECT</red> * <red>FROM</red> <blue>Kunden</blue>; --%';</code>
+	<p>
+		Als Ergebnis erhält der Nutzer jetzt also eine Liste aller Bücher, aber auch aller Kundendaten <i>(Notiz: <code>--</code> beginnt in SQL einen Kommentar, weswegen alles danach von der Datenbank ignoriert wird)</i> Dies ist natürlich unerwünscht. Es gibt viele Wege, dies zu verhindern. Meist werden Sonderzeichen einfach kodiert, d. h. alle Sonderzeichen werden sowohl bei eingegebenen Suchanfragen als auch in der Datenbank selber durch z.B. <code>\</code> und einen für dieses Sonderzeichen spezifischen Zahlencode ersetzt.
+	</p>
+	<div class="title-tertiary" id="datensicherheit">Datensicherheit</div>
+	<div class="title-quaternary" id="backuptypen">Backuptypen</div>
+	<p>
+		Es gibt drei unterschiedliche Arten von Backups:
+	</p>
+	<ul>
+		<li><b>Vollständige Backups</b>: Umfassen alle Daten, größter Speicherbedarf</li>
+		<li><b>Differentielle Backups</b>: Umfasst alle Daten, die seit dem letzten vollständigen Backup verändert wurden. Speichert auch gelöschte Daten. Mittlerer Speicherbedarf.</li>
+		<li><b>Inkrementelle Backups</b>: Umfasst alle Änderungen seit dem letzten vollständigen oder differentiellen Backup. Speichert kein gelöschten Daten. Geringster Speicherbedarf.</li>
+	</ul>
+	<p>
+		Aufgrund dieser Staffelung von Speicherbedarf enthalten die meisten Backuplösungen auch gestaffelt große Zeitintervalle für die einzelnen Backuptypen, z.B.:
+	</p>
+	<ul>
+		<li>vollständig alle 6 Monate</li>
+		<li>differentiell jeden Monat</li>
+		<li>inkrementell jede Woche</li>
+	</ul>
+	<div class="title-quaternary" id="backupstrategien">Backupstrategien</div>
+	<p>Da auch Backupmedien mal beschädigt, durch ein Feuer vernichtet o.Ä. werden können, gibt es Strategien, mehrere Backups zu verteilen. Während es mittlerweile modernere und sicherere Strategien gibt, bleibt die <b>3-2-1</b>-Strategie die meistverwendetste. 3-2-1 <i>(gesprochen: three-two-one)</i> steht dabei für:</p>
+	<ul>
+		<li><b>3</b> separate Kopien des selben Backups</li>
+		<li><b>2</b> verschiedene Medien (z.B. SSD, HDD, CD-ROM, USB-Stick)</li>
+		<li><b>1</b> der Backups an einem anderen Ort (z.B. falls Feuer)</li>
+	</ul>
+	<div class="title-secondary" id="glossar">Glossar</div>
+	<ul>
+		<li><b>3-2-1-Strategie</b>: <p> Backupstrategie, 3-2-1 <i>(gesprochen: three-two-one)</i> steht für:</p>
+			<ul>
+				<li><b>3</b> separate Kopien des selben Backups</li>
+				<li><b>2</b> verschiedene Medien (z.B. SSD, HDD, CD-ROM, USB-Stick)</li>
+				<li><b>1</b> der Backups an einem anderen Ort (z.B. falls Feuer)</li>
+			</ul>
+		</li>
+		<li><b>Anomalie</b>: <p>Anomalien in Datenbanken sind Konstruktionsfehler, die dazu führen, dass Daten versehentlich gelöscht werden, nicht gespeichert werden können oder widersprüchlich werden.<br/>
+			Als Beispiel nehmen wir hier wieder unser Schüler-Schulbuch Szenario, doch diesmal haben wir eine Tabelle für alle Ausleihen, wobei für jede Ausleihe die Daten des Schülers und des Buches gespeichert werden.</p>
+		</li>
+		<li><b>API (Application Programming Interface)</b>: <p>Schnittstelle zur Interaktion mit einem anderen System, verwendet für die Programmierung von Anwendungen. Kann für ein lokales Gerät, Software oder Internetserver sein (Web-API).</p>
+		</li>
+		<li><b>Attribut/Zeile</b>: <p>
+			Attribute sind die Spalten von Tabellen (Entitäten) relationaler Datenbanken.
+		</p></li>
+		<li><b>Backuptypen</b>: <p>
+			Es gibt drei unterschiedliche Arten von Backups:
+		</p>
+		<ul>
+			<li><b>Vollständige Backups</b>: Umfassen alle Daten, größter Speicherbedarf</li>
+			<li><b>Differentielle Backups</b>: Umfasst alle Daten, die seit dem letzten vollständigen Backup verändert wurden. Speichert auch gelöschte Daten. Mittlerer Speicherbedarf.</li>
+			<li><b>Inkrementelle Backups</b>: Umfasst alle Änderungen seit dem letzten vollständigen oder differentiellen Backup. Speichert kein gelöschten Daten. Geringster Speicherbedarf.</li>
+		</ul>
+		<p>
+			Aufgrund dieser Staffelung von Speicherbedarf enthalten die meisten Backuplösungen auch gestaffelt große Zeitintervalle für die einzelnen Backuptypen, z.B.:
+		</p>
+		<ul>
+			<li>vollständig alle 6 Monate</li>
+			<li>differentiell jeden Monat</li>
+			<li>inkrementell jede Woche</li>
+		</ul></li>
+		<li><b>Beziehung</b>: <p>
+			Zusammenhänge zwischen den Entitäten einer relationalen Datenbank
+		</p></li>
+		<li><b>Chen-Notation</b>: <p>
+			Mit der <b>Chen-Notation</b> wird gekennzeichnet, welche Art von Beziehung zwischen zwei Entitäten vorliegt. Um dies zu veranschaulichen: 
+		</p>
+		<ul>
+			<li>Ein Schüler kann mehrere Schulbücher ausleihen, aber ein Schulbuch wird nur von einem Schüler ausgeliehen.<br/>heißt <b>1:n</b>-Beziehung</li>
+			<li>Ein Kunde kann in einem Webshop mehrere Produkte kaufen, und ein Produkt kann von mehreren Kunden gekauft werden.<br/>heißt <b>m:n</b>-Beziehung</li>
+			<li>Die Filiale einer Bäckerkette hat genau eine Adresse, und an einer Adresse steht genau eine Bäckerfiliale.<br/>heißt <b>1:1</b>-Beziehung</li>
+		</ul></li>
+		<li><b>Constraints</b>: <p>
+			Geben Rahmenbedingungen für das Attribut an. Hier sind sie aufgelistet:
+		</p>
+		<ul>
+			<p><code><purple>NOT NULL</purple></code>: Es <i>muss</i> immer ein Wert für dieses Attribut angegeben werden.</p>
+			<p><code><purple>AUTO INCREMENT</purple></code>: Zählt beim Erstellen neuer Datensätze den Wert bei Zahlattributen hoch. Hiermit kann vermieden werden, dass für Primärschlüssel oder <code><purple>NOT NULL</purple></code>-Attribute ein Wert angegeben werden muss.</p>
+			<p><code><purple>UNIQUE</purple></code>: Der Wert muss einzigartig sein.</p>
+		</ul></li>
+		<li><b>Datenart</b>: <p>
+			Es gibt drei verschiedene Arten von Daten, denen Attribute von Entitäten zugeordnet werden können: <b>Stammdaten, Bewegungsdaten und Prozessdaten.</b>
+		</p>
+		<ul>
+			<p>
+				<b>Stammdaten</b> sind Daten, die entweder komplett fest und unveränderlich sind (z.B. ein Geburtsdatum) oder sich nur sehr selten verändern (z.B. E-Mail-Addresse eines Online-Accounts).
+			</p>
+			<p>
+				<b>Bewegungsdaten</b> sind Daten, die sich <i>regelmäßig</i> und <i>ereignisbasiert</i> verändern. (z.B. die Anzahl von Tischlampen, die ein Online-Shop noch auf Lager hat)
+			</p>
+			<p>
+				<b>Prozessdaten</b> sind Daten, die sich <i>regelmäßig</i> und <i>fortlaufend</i> verändern. Sie stellen das Fortschreiten eines Prozesses dar. (z.B. bis zu welcher Minute du einen Podcast schon gehört hast)
+			</p>
+		</ul></li>
+		<li><b>Datenbank (DB)</b>: <p>
+			Unter Datenbanken versteht man in der Informatik jegliches System, welches das organisierte Speichern, Abrufen und Verändern von Daten erlaubt. Es gibt viele verschiedene Möglichkeiten, solch ein System zu erstellen. Dies ist auch immer von der Art der zu speichernden Daten abhängig. Dieses Portfolio wird ausschließlich die relationalen Datenbanken thematisieren. Sie sind eine häufige Wahl für viele verschiedene Anwendungsmöglichkeiten.
+		</p></li>
+		<li><b>Datenbankanforderung</b>: <p>
+			Während an eine Datenbank und ihr Datenbanksystem in realen Szenarios viele individuelle und spezifischere Anforderungen gestellt werden, können die grundlegenden strukturellen Anforderungen an die Datenbank alleine neben der Anomaliefreiheit auf zwei allgemeine reduziert werden: <b>Datenkonsistenz</b> und <b>Redundanzfreiheit</b>.
+		</p>
+		<ul>
+			<p><b>Datenkonsistenz</b> bedeutet, dass die Datenbank keine widersprüchlichen Daten enthalten darf.</p>
+			<p><b>Redundanzfreiheit</b> bedeutet, dass Daten innerhalb einer Datenbank nicht mehrfach oder unnötig komplex gespeichert werden, also so, dass Speicherplatz optimal genutzt wird.</p>
+		</ul></li>
+		<li><b>Datenbankmanagementsystem (DBMS)</b>: <p>
+			Verwaltet, wer welche Daten der Datenbank lesen, modifizieren und löschen kann. Außerdem verwaltet es Möglichkeiten, auf die Datenbank zuzugreifen, wie beispielsweise eine API.
+		</p></li>
+		<li><b>Datenbanksprachen</b>: <p>Datenbanksprachen werden verwendet, um aus einer Datenbank Informationen auszulesen, zu löschen und zu modifizieren. Es gibt sehr viele, sowohl für relationale als auch für andere Datenbanken. Die meisten Datenbanksprachen für relationale Datenbanken sind Dialekte von <b>SQL (Structured Query Language)</b>, wie beispielsweise CQL, MySQL, PostgreSQL, sqlite und viele mehr.</p></li>
+		<li><b>Datenbanksystem (DBS)</b>: <p>
+			Gemeinsamer Zusammenschluss aus Datenbankmanagementsystem (DBMS) und Datenbank (DB).
+		</p></li>
+		<li><b>Datenschutz</b>: <p>
+			Bedeutet das <i>Schützen</i> von Daten <i>vor unerlaubtem Zugriff.</i> Dafür muss Zugriff auf Daten verwaltet werden, wie beispielsweise, was für Nutzer/Mitarbeiter was für Zugriff <i>(Lese-/Schreib-/Löschzugriff "rwx")</i> auf welche Tabellen haben.
+		</p></li>
+		<li><b>Datensicherheit</b>: <p>
+			Bedeutet die <i>Sicherung des unbeschädigten Fortbestehens</i> von Daten.
+		</p></li>
+		<li><b>Datentyp</b>: </li>
+		<li><b>Entität/Tabelle</b>: </li>
+		<li><b>Entity-Relationship-Modell (ER-Modell, ERM)</b>: </li>
+		<li><b>Fremdschlüssel</b>: </li>
+		<li><b>JOINs</b>: </li>
+		<li><b>Normalform/Normalisierung</b>: </li>
+		<li><b>Objekt</b>: </li>
+		<li><b>Primärschlüssel</b>: </li>
+		<li><b>Relationale Datenbanken</b>: </li>
+		<li><b>SQL (Structured Query Language)</b>: </li>
+	</ul>
+	<div class="title-primary" id="praxis">Praxisanwendung</div>
+	<div class="title-secondary" id="praxis-erm">ER-Modell</div>
+	<img src="resources/images/erm-praxis.png" class="large-image"/>
+	<div class="title-secondary" id="praxis-sql">Beispielabfrage</div>
+	<p>Wieviele verschiedene Backwaren verkauft jede Filiale?</p>
+	<code><red>SELECT</red> <blue>Filiale</blue>.Ort, <blue>Filiale</blue>.Straße, <blue>Filiale</blue>.HausNr, <green>COUNT</green>(<blue>FilialeBackware</blue>.Backware)
+		<br><red>FROM</red> <blue>Filiale</blue>, <blue>FilialeBackware</blue>
+		<br><red>WHERE</red> <blue>Filiale</blue>.FilialNr = <blue>FilialeBackware</blue>.FilialNr
+		<br><purple>GROUP BY</purple> <blue>FilialeBackware</blue>.FilialNr;
+	</code>
 </p>
